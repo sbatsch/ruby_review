@@ -16,49 +16,104 @@
 # an object is made of attributes and its behavior 
 # attributes are what defines that facts, the state, the data of an object
 # behavior is what an object can do, an action. behaviors change attributes 
-#purpose of a method is to give a return value 
+#purpose of a method is to give a return value
 
-# class Employee
-#   def initialize(input_first_name, input_last_name, input_salaray, input_active)
-#     @first_name = input_first_name
-#     @last_name = input_last_name
-#     @salary = input_salaray
-#     @active = input_active
+
+
+class Employee
+attr_reader :first_name, :last_name, :salary, :active
+attr_writer :first_name, :last_name, :salary, :active
+
+  def initialize(input_options)
+    @first_name = input_options[:first_name]
+    @last_name = input_options[:last_name]
+    @salary = input_options[:salary]
+    @active = input_options[:active]
+  end 
+
+  # def first_name
+  #    @first_name
+  # end 
+
+  # def last_name
+  #   @last_name
+  # end
+
+  # def salary
+  #   @salary
+  # end 
+
+  # def active
+  #   @active
+  # end 
+
+  # def first_name=(new_first_name)
+  #   @first_name = new_first_name
+  # end
+
+  def print_info
+    puts "#{ first_name } #{ last_name } makes #{ salary } a year." 
+  end 
+
+  def give_annual_raise
+    @salary = @salary * 1.05
+  end   
+end 
+
+class Manager < Employee
+  attr_reader :employees
+
+  def initiliaze(input_options)
+   super(input_options)
+    @employees = input_options[:employees]
+  end 
+# attr_reader :first_name, :last_name, :salary, :active
+# attr_writer :first_name, :last_name, :salary, :active
+
+#   def initialize(input_options)
+#     @first_name = input_options[:first_name]
+#     @last_name = input_options[:last_name]
+#     @salary = input_options[:salary]
+#     @active = input_options[:active]
+#     @employees = input_options[:employees]
 #   end 
 
-#   def first_name
-#      @first_name
-#   end 
+   def send_report
+    puts "Sending Email..."
+    #code to send Email
+    puts "Email sent."
+   end
+end 
 
-#   def last_name
-#     @last_name
-#   end
+employee_1 = Employee.new(
+                          first_name: "Han",
+                          last_name: "Solo", 
+                          salary: 70000, 
+                          active: true
+                          )
 
-#   def salary
-#     @salary
-#   end 
+employee_2 = Employee.new(
+                          first_name: "Lando",
+                          last_name: "Calrissian", 
+                          salary: 80000, 
+                          active: true
+                          )
 
-#   def active
-#     @active
-#   end 
+manager = Manager.new(
+                      first_name: "Leia",
+                      last_name: "Organa", 
+                      salary: 1000000, 
+                      active: true,
+                      employees: [employee_1, employee_2]
+                      )
 
-#   def first_name=(new_first_name)
-#     @first_name = new_first_name
-#   end
+employee_2.print_info
+employee_1.print_info
+manager.send_report
+p manager
 
-#   def print_info
-#     puts "#{ first_name } #{ last_name } makes #{ salary } a year." 
-#   end 
 
-#   def give_annual_raise
-#     @salary = @salary * 1.05
-#   end 
-# end 
 
-# employee_1 = Employee.new("Han", "Solo", 70000, true)
-# employee_2 = Employee.new("Lando", "Calrissian", 80000, true)
-
-# employee_2.print_info
 
 
 # cities = ["Jackson", "Southhaven", "Oxford", "Booneville", "nowwhere"]
@@ -67,11 +122,11 @@
 #   puts "#{ element }, Mississippi" 
 # end 
 
-number = 0 
+# number = 0 
 
 
-until number < 4
-  puts "Bats in the belfry"
-  number += 1
-end 
+# # until number < 4
+# #   puts "Bats in the belfry"
+# #   number += 1
+# # end 
 
