@@ -1,7 +1,7 @@
 require_relative "./food.rb"
 require_relative "./item.rb"
 
-food_1 = Food.new(
+food_1 = StoreFront::Food.new(
                   item_name: "Tomato", 
                   price: 5, 
                   description: "bright red", 
@@ -9,7 +9,7 @@ food_1 = Food.new(
                   shelf_life: "2 years"
                   )
 
-item_1 = Item.new(
+item_1 = StoreFront::Item.new(
                   item_name: "blaster", 
                   price: 8000, 
                   description: "black with a red engrave", 
